@@ -27,9 +27,9 @@ public class HelloController {
         WinDef.HWND hwnd = User32.INSTANCE.FindWindow(null, STAGE_TITLE);
 
         // Tell MPV on which window video should be displayed:
-        //LongByReference longByReference =
-        //        new LongByReference(Pointer.nativeValue(hwnd.getPointer()));
-        //mpv.mpv_set_option(handle, "wid", 4, longByReference.getPointer());
+        LongByReference longByReference =
+                new LongByReference(Pointer.nativeValue(hwnd.getPointer()));
+        mpv.mpv_set_option(handle, "wid", 4, longByReference.getPointer());
 
         int error;
 
