@@ -52,6 +52,21 @@ jlink {
     }
 }
 
+tasks.named('test') {
+//	jvmArgs += "--enable-native-access=org.cryptomator.jfuse.win.amd64"
+    jvmArgs += "--enable-preview"
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).each {
+//	it.options.compilerArgs.add('--enable-native-access=org.cryptomator.jfuse.win.amd64')
+    it.options.compilerArgs.add('--enable-preview')
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += "--enable-preview"
+}
+
 jlinkZip {
     group = 'distribution'
 }
